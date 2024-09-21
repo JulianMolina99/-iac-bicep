@@ -1,5 +1,5 @@
 param acrName string = 'acrtechnicalassessmentprod'
-param aksClusterName string = 'aksCluster'
+param aksClusterName string = 'aks-technicalassessment-prod'
 param location string = 'eastus'
 
 module acrModule '../../modules/acr/acr.bicep' = {
