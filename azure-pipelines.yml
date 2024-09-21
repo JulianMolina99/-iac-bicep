@@ -3,6 +3,11 @@ trigger:
 
 name: Deploy Bicep files
 
+parameters:
+- name: azureServiceConnection
+  type: string
+  default: 'azureSubscription
+
 variables:
   resourceGroupName: 'rg-technicalassessment-prod'
   location: 'eastus'
@@ -16,12 +21,13 @@ steps:
 - task: AzureResourceManagerTemplateDeployment@3
   inputs:
     deploymentScope: 'Resource Group'
-    azureSubscription: 'azureSubscription'
+    azureResourceManagerConnection: ${{ parameters.azureServiceConnection }}
     action: 'Create Or Update Resource Group'
     resourceGroupName: '$(resourceGroupName)'
     location: '$(location)'
     templateLocation: 'Linked artifact'
     csmFile: '$(templateFile)'
     csmParametersFile: '$(csmParametersFile)'
+    overrideParameters: '-storageAccountType Standard_LRS'
     deploymentMode: 'Incremental'
     deploymentName: 'DeployPipelineTemplate'
