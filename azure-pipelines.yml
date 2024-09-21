@@ -6,7 +6,7 @@ name: Deploy Bicep files
 parameters:
 - name: azureServiceConnection
   type: string
-  default: 'azureSubscription
+  default: 'azureSubscription'
 
 variables:
   resourceGroupName: 'rg-technicalassessment-prod'
