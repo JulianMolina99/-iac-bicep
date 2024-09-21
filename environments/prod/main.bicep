@@ -2,7 +2,7 @@ param acrName string = 'acrtechnicalassessmentprod'
 param aksClusterName string = 'aksCluster'
 param location string = 'eastus'
 
-module acrModule './modules/acr/acr.bicep' = {
+module acrModule '../modules/acr/acr.bicep' = {
   name: 'deployAcr'
   params: {
     acrName: acrName
@@ -10,7 +10,7 @@ module acrModule './modules/acr/acr.bicep' = {
   }
 }
 
-module aksModule './modules/aks/aks.bicep' = {
+module aksModule '../modules/aks/aks.bicep' = {
   name: 'deployAks'
   params: {
     aksClusterName: aksClusterName
