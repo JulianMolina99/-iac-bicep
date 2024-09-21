@@ -13,11 +13,7 @@ resource aks 'Microsoft.ContainerService/managedClusters@2024-06-02-preview' = {
     type: 'SystemAssigned'
   }
   properties: {
-    addonProfiles: {
-      extensionManager: {
-        enabled: true
-      }
-    }
+
     agentPoolProfiles: [
       {
         name: nodePoolName
