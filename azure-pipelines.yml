@@ -12,7 +12,7 @@ variables:
   resourceGroupName: 'rg-technicalassessment-prod'
   location: 'eastus'
   templateFile: './environments/prod/main.bicep'
-  csmParametersFile: './main.bicepparam'
+  csmParametersFile: './environments/prod/parameters.json'
 
 pool:
   name: 'machine-onpremise'
