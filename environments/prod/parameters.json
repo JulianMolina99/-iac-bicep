@@ -6,7 +6,7 @@
       "value": "acrtechnicalassessmentprod"
     },
     "aksClusterName": {
-      "value": "aksClusterProd"
+      "value": "aks-technicalassessment-prod"
     },
     "location": {
       "value": "eastus"
