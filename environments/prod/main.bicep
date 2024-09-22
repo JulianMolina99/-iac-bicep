@@ -21,3 +21,13 @@ module aksModule '../../modules/aks/aks.bicep' = {
     vmSize: 'Standard_B2s'
   }
 }
+
+module apiManagement 'modules/apim/apim.bicep' = {
+  name: 'deployApiManagement'
+  params: {
+    apiManagementServiceName: 'api-technicalassessment-prod'
+    location: 'East US'
+    publisherEmail: 'julianmolinac99@gmail.com'
+    publisherName: 'Technical Assessment'
+  }
+}
