@@ -22,7 +22,7 @@ module aksModule '../../modules/aks/aks.bicep' = {
   }
 }
 
-module apiManagement 'modules/apim/apim.bicep' = {
+module apiManagement '../../modules/apim/apim.bicep' = {
   name: 'deployApiManagement'
   params: {
     apiManagementServiceName: 'apim-technicalassessment-prod'
