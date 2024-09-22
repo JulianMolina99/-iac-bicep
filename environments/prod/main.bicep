@@ -25,7 +25,7 @@ module aksModule '../../modules/aks/aks.bicep' = {
 module apiManagement 'modules/apim/apim.bicep' = {
   name: 'deployApiManagement'
   params: {
-    apiManagementServiceName: 'api-technicalassessment-prod'
+    apiManagementServiceName: 'apim-technicalassessment-prod'
     location: 'East US'
     publisherEmail: 'julianmolinac99@gmail.com'
     publisherName: 'Technical Assessment'
