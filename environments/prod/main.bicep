@@ -1,6 +1,9 @@
-param acrName string = 'acrtechnicalassessmentprod'
-param aksClusterName string = 'aks-technicalassessment-prod'
-param location string = 'eastus'
+param acrName string
+param aksClusterName string
+param location string
+param apiManagementServiceName string
+param publisherEmail string
+param publisherName string
 
 module acrModule '../../modules/acr/acr.bicep' = {
   name: 'deployAcr'
@@ -25,9 +28,9 @@ module aksModule '../../modules/aks/aks.bicep' = {
 module apiManagement '../../modules/apim/apim.bicep' = {
   name: 'deployApiManagement'
   params: {
-    apiManagementServiceName: 'apim-technicalassessment-prod'
-    location: 'East US'
-    publisherEmail: 'julianmolinac99@gmail.com'
-    publisherName: 'Technical Assessment'
+    apiManagementServiceName: apiManagementServiceName
+    location: location
+    publisherEmail: publisherEmail
+    publisherName: publisherName
   }
 }
