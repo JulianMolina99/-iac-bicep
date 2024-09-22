@@ -10,6 +10,15 @@
     },
     "location": {
       "value": "eastus"
+    },
+    "apiManagementServiceName": {
+      "value": "apim-technicalassessment-prod"
+    },
+    "publisherEmail": {
+      "value": "julianmolinac99@gmail.com"
+    },
+    "publisherName": {
+      "value": "Technical Assessment"
     }
   }
 }
