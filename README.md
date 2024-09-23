@@ -1,5 +1,7 @@
 # Application Infrastructure Documentation
 
+![Infraestructure](./images/infraestructure.png)
+
 This documentation explains the infrastructure defined in **Bicep** templates and how the components (AKS, ACR, API Management) are interconnected. The **FastAPI** application is deployed in an **Azure Kubernetes Service (AKS)** cluster with an **API Management** layer in front, and all resources are provisioned and managed using modular Bicep files. Here's a breakdown of the repository structure, the key components, and how they work together.
 
 ---
