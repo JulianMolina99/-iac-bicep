@@ -50,3 +50,36 @@ This documentation explains the infrastructure defined in **Bicep** templates an
 - `aks.bicep` handles the provisioning of the AKS cluster, including node pool configurations, auto-scaling, and networking settings.
 
 ---
+
+### 3. Azure API Management (APIM)
+
+**Definition**:  
+- Managed by `apim.bicep`, APIM serves as the **front-end** for all external traffic. It enforces authentication using API keys or JWT tokens before forwarding requests to the AKS cluster, ensuring security.
+- **Key properties**:
+  - **Public Network Access**: Enabled to allow traffic from external sources.
+  - **API Gateway**: Handles routing and authentication for all incoming requests, validating API keys or JWT tokens before forwarding them to AKS.
+
+**Connectivity**:
+- All incoming requests are routed through APIM, which forwards them to the FastAPI pods running in AKS.
+
+**Modules**:
+- `apim.bicep` defines the API Management service, including configuration for public access, authentication, and routing policies.
+
+---
+
+## Deployment Flow and Infrastructure Orchestration
+
+The infrastructure is deployed in a modular way, allowing easy updates and reusability across different environments (like dev, staging, and production).
+
+### 1. ACR Deployment:
+   - The ACR is created and configured using the `acr.bicep` module. This is the first component deployed, as it is needed for storing Docker images that the AKS cluster will pull.
+
+### 2. AKS Deployment:
+   - The AKS cluster is deployed next using the `aks.bicep` module. It includes a node pool configured for auto-scaling, and the network profile is set up to allow communication with API Management.
+   - The cluster is set up with Role-Based Access Control (RBAC), ensuring secure management of the Kubernetes resources.
+
+### 3. API Management Deployment:
+   - Finally, the API Management service is deployed using the `apim.bicep` module. It is configured to manage the incoming traffic.
+
+### Main Orchestration File (main.bicep):
+- The `main.bicep` file brings everything together by deploying ACR, AKS, and APIM in the correct order. It pulls in the modules and parameters from the `parameters.json` file, ensuring that all components are deployed consistently and connected properly.
