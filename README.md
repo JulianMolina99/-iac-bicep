@@ -1,20 +1,20 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+# Application Infrastructure Documentation
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+This documentation explains the infrastructure defined in **Bicep** templates and how the components (AKS, ACR, API Management) are interconnected. The **FastAPI** application is deployed in an **Azure Kubernetes Service (AKS)** cluster with an **API Management** layer in front, and all resources are provisioned and managed using modular Bicep files. Here's a breakdown of the repository structure, the key components, and how they work together.
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+---
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+## Repository Structure and Modules
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+### Directory Structure:
+- **`environments/prod`**: 
+  - **`main.bicep`**: The main orchestration file that connects all the infrastructure modules for the production environment.
+  - **`parameters.json`**: Contains environment-specific values such as resource names and locations.
+  
+- **`modules/acr/acr.bicep`**: Manages the Azure Container Registry (ACR), used for storing Docker images for the FastAPI application.
+  
+- **`modules/aks/aks.bicep`**: Defines the AKS cluster and node pools where the FastAPI application will be deployed.
+  
+- **`modules/apim/apim.bicep`**: Deploys Azure API Management, which controls access to the FastAPI application in AKS.
+
+---
