@@ -34,3 +34,19 @@ This documentation explains the infrastructure defined in **Bicep** templates an
 - `acr.bicep` handles the creation and configuration of the ACR instance, along with scope maps that define permissions for different roles like push, pull, and admin actions.
 
 ---
+
+### 2. Azure Kubernetes Service (AKS)
+
+**Definition**:  
+- Managed by `aks.bicep`, AKS is where the FastAPI application is hosted. AKS is configured to auto-scale based on resource demands, ensuring high availability and efficient resource use.
+- **Key properties**:
+  - **Node pool**: A virtual machine scale set (VMSS) is used to run the containers, with auto-scaling enabled to manage between 2 and 3 nodes.
+
+**Connectivity**:
+- AKS pulls the Docker image from ACR and runs it inside a Kubernetes pod.
+- **API Management**: Acts as a gateway for external requests, routing traffic to the FastAPI service in AKS.
+
+**Modules**:
+- `aks.bicep` handles the provisioning of the AKS cluster, including node pool configurations, auto-scaling, and networking settings.
+
+---
