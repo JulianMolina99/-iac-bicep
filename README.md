@@ -18,3 +18,19 @@ This documentation explains the infrastructure defined in **Bicep** templates an
 - **`modules/apim/apim.bicep`**: Deploys Azure API Management, which controls access to the FastAPI application in AKS.
 
 ---
+
+## Key Components
+
+### 1. Azure Container Registry (ACR)
+
+**Definition**:  
+- Managed by `acr.bicep`, ACR is where the **Docker images** for the FastAPI application are stored and pulled from by AKS during deployments.
+
+**Connectivity**:
+- The CI/CD pipeline builds the Docker image and pushes it to ACR.
+- AKS pulls the image from ACR during deployments.
+
+**Modules**:
+- `acr.bicep` handles the creation and configuration of the ACR instance, along with scope maps that define permissions for different roles like push, pull, and admin actions.
+
+---
